@@ -1,0 +1,73 @@
+﻿body{
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    height: 300px;
+    background-image: url("images/179H.jpg");
+    background-size: cover;
+
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    color: #664455;
+    border: 5px solid #664455;
+    font-weight: 700;
+    font-size: 50px;
+    position:absolute;
+    margin: 110px 165px 100px 450px;
+    padding: 20px;
+}
+
+.subtitle{
+    text-transform:uppercase;
+    color: #664455;
+    position: absolute; 
+    margin: 250px 165px 100px 490px;
+}
+
+.content_right{
+    float: right;
+    margin-right: 250px;
+    text-align:left;
+    margin-top: 30px;
+    font-size: 15px;
+
+}
+
+
+.content_left{
+    margin-left: 30px;
+    display:inline;
+}
+
+blockquote{
+    border: 1px dotted  #664455;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+.quote{
+    text-align:right;
+    margin-right: 150px;
+}
+
+footer{
+    height: 90px;
+    background-image: url("images/179H.jpg");
+    background-size: cover;
+    clear: both;
+}
+
+.footer{
+    //display:block;
+    text-align:center;
+    text-size: 7px;
+    color:#664455;
+    margin-top: 100px;
+
+}
