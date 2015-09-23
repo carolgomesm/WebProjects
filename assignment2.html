@@ -1,0 +1,136 @@
+﻿<!--
+    Assigment #2 - Web Development Application course - Centennial College
+
+    REQUIREMENTS
+
+    Select any product you like and implement a product 
+    page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following example.
+    Select any product you like and implement a product page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following picture:Select any product you like and implement a product page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following picture:Select any product you like and implement a product page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following picture:Select any product you like and implement a product page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following picture:Select any product you like and implement a product page as an HTML document that contains an HTML form and displays in the browser similar (but not necessarily identical) to the following picture:•	Use the Visual Studio.Net 2013 HTML editor to create the HTML document.
+
+    •	Search the web for a product of your choice and capture some pictures and product description / features for your assignment.
+
+    •	Create an HTML form that allows you to select the quantity, size (if available for your product, if not color) to order.
+
+    •	Style the page using a linked CSS file. 
+
+    •	Under the banner, display the current date, formatted in a similar way to the screenshot above.
+
+    After the HTML code that displays the product info, insert a JavaScript block to show a prompt box to ask the user to enter his/her favorite 
+    brand of the product you chose for your page. Provide the default value “none” in the box.
+
+    •	Finally, in the same script as the above question, ask the visitor how much he likes his favorite brand on a scale 1 to 100. Provide the default value “80” in the box.
+    •	Print repeatedly, in a different font color, the name of the favorite brand as many times as the value between 1 to 100 entered by the visitor.
+-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="assignment2.css" rel="stylesheet" type="text/css" />
+    <title>Carolina Miranda - Assignment 2 - Kobo</title>
+    <!--Student: Carolina Miranda
+        Student Number: 300812147-->
+</head>
+
+<body>
+    <header>
+        <h1 id="banner">Kobo eReaders</h1>
+    </header>
+
+    <nav id="clock">
+        <p id="date"></p>
+        <p id="time"></p>
+
+        <script>
+            var months = ["January", "Februrary", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December"];
+            var today = new Date();
+
+            //function to tranform number in ordinal number
+            function day(d) {
+                if (d > 3 && d < 23) return "th"
+                switch (d % 10) {
+                    case 1: return "st";
+                    case 2: return "nd";
+                    case 3: return "rd";
+                    default: return "th"
+                }
+            }
+
+            var time = new Date();
+
+            document.getElementById("date").innerHTML = months[today.getMonth()] + " " + today.getDate() + day(today.getDate()) + " , "
+            + today.getFullYear();
+
+            //Tranform minutes and seconds in numbers with two digits
+            var currentMinutes = time.getMinutes();
+            currentMinutes = ("0" + currentMinutes).slice(-2);
+            var currentSeconds = time.getSeconds();
+            currentSeconds = ("0" + currentSeconds).slice(-2);
+            
+            document.getElementById("time").innerHTML = time.getHours() + ":" + currentMinutes + ":" + currentSeconds;
+
+        </script>
+    </nav>
+
+    <div class="content_right">
+        <!--Content taken from the website kobo.ca - just for illustration-->
+        <h2>Kobo Touch 2.0</h2>
+        <h3>The perfect eReader</h3>
+        <p>Kobo Touch 2.0 features an anti-glare touchscreen that provides a natural<br /> and comfortable 
+        reading experience, even in direct sunlight.<br /> 
+        Enjoy easy and instant access to Kobo’s 24/7 eBookstore<br /> as well as the ability to customize your 
+        fonts and margins.<br /> Carry your library with you and read an entire eBook on a single<br />
+        charge with up to 2 months of battery life*</p>
+
+        <h5 class="price">$89.00 CAD</h5>
+        <form action="post" name="productForm">
+            <fieldset>
+                <label>Quantity: </label>
+                <input type="number" name="quantity" value="1" min="1" max="50"/>
+                <label class="label_color">Color: </label>
+                <select>
+                    <option value="black">Black</option>
+                    <option value="darkRed">Dark Red</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <button type="submit">Buy Now!</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="content_left">
+        <img src="images/koboImage.jpg" height="400" width="350" />
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="myBrand">
+        <p class="favorite-brand"><strong> My favorite brand is:</strong></p>
+        <script>
+            var answer = prompt("What is yout favorite brand of eReader?", "None") + "! ";
+            var like = prompt("On a scale of 1 to 100, how much do you like it?", "80");
+
+            for (i = 0; i < parseInt(like) ; i++) {
+                document.write(answer.fontcolor(getRandomColor()));
+            }
+
+            //Function to generate random colors in hexal format
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        </script>
+    </div>
+
+    <footer>
+        <p> &copy;Copyright Carolina Miranda - Centennial College</p>
+    </footer>       
+</body>
+</html>

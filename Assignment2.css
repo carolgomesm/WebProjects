@@ -1,0 +1,96 @@
+﻿body{
+    font-family: 'Hind', sans-serif;
+}
+
+/*Banner*/
+header {
+    background-image: url(images/photoBanner.jpg);
+    height: 200px;
+    background-size:cover;
+}
+
+#banner{
+    color:#223344;
+    font-size: 50px;
+    padding-top: 45px;      
+    padding-left: 30px;
+    position:relative;
+    background: rgba(221, 238, 255,0.6)
+}
+
+/*Date and Time*/
+nav{
+    background: rgba(221, 238, 255,0.6);
+}
+#time{
+    float: right;
+    margin-right: 30px; 
+}
+#date{
+    float: left;
+    margin-left:20px;
+ 
+}
+
+/*Main Content*/
+.content_right{
+    float: right;
+    text-align: left;
+    margin: 15px 280px 50px 0px;;
+    clear: right;
+}
+
+h2{
+    font-size: 40px;
+    color:#442233;
+}
+
+h3{
+    color:#442233;
+}
+.price{
+    font-size: 20px;
+}
+/*Form*/
+button{
+    margin-left: 15px;
+}
+.label_color{
+    margin-left: 8px;
+}
+
+fieldset {
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #888888 ;
+}
+
+/*Picture*/
+
+.content_left{
+    margin-left: 170px;
+    float: left;
+    margin-top: 90px;
+    clear:left;
+}
+
+.clear{
+    clear: both;   
+}
+
+/*Last div*/
+
+#myBrand{
+    margin: 10px 20px 90px 20px;
+}
+
+.favorite-brand{
+    font-size:17px;
+}
+
+/*Footer*/
+
+footer{
+    font-size: 13px;
+    text-align: center;
+}
+
