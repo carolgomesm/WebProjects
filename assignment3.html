@@ -1,0 +1,237 @@
+﻿<!--
+    REQUIREMENTS:
+
+    Using Visual Studio 2013, create an HTML document called assignment3.html that collects the following information from the user:
+    - First Name, Last Name, Address, City, Postal Code, Province, Age, Password and Email.
+
+    Next modify assignment3.html to include the JavaScript code required for field validation.
+    DO NOT USE HTML5 VALIDATION
+    Following are the guidelines for validating the user input:
+
+	→ All the fields are mandatory (cannot be left blank)
+
+    → The postal code has to be in the a0a0a0 format – (research it on 	the internet)
+
+	→ Province is one of QC, ON, MN, SK, AB, BC.
+	
+	→ Age has to be at least 18 yrs. old.
+
+    → The Email field must contain the @ and . characters
+    (5% of the mark for using a regular expression – research it on the internet) 
+
+	→ The Confirm Password and Password fields should have identical input. 
+
+    → Passwords must have at least 6 characters and must contain at least one digit and one upper-case character.
+    (5% of the mark for using a regular expression – research it on the internet) 
+
+
+    When the form fields pass validation, an alert message is displayed to show a confirmation message (e.g. “Thanks for registering with our website, your customer record was created successfully.”). 
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="assignment3.css" type="text/css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Carolina Miranda - Assignment 3</title>
+
+    <script type="text/javascript">
+
+
+        function formValidation() {
+
+            var fName = document.getElementById("firstName");
+            var lName = document.getElementById("lastName");
+            var address = document.getElementById("address");
+            var city = document.getElementById("city");
+            var postalCode = document.getElementById("postalCode");
+            var province = document.getElementById("province");
+            var age = document.getElementById('age');
+            var password = document.getElementById("password");
+            var confirmPassword = document.getElementById("confirmPassword");
+            var email = document.getElementById("email");
+
+            var blank = /^\s+|\s+$/g;
+
+            if (fName.value == null || fName.value == "" || fName.value.replace(blank, ' ') == " ")
+            {
+                alert("First Name is required");
+                fName.focus();
+                return false;
+            }
+
+
+            if (lName.value == null || lName.value == "" || lName.value.replace(blank, ' ') == " ") {
+                alert("Last Name is required");
+                lName.focus();
+                return false;
+            }
+
+            if (address.value == null || address.value == "" || address.value.replace(blank, ' ') == " ") {
+                alert("Address is required");
+                address.focus();
+                return false;
+            }
+            if (city.value == null || city.value == "" || city.value.replace(blank, ' ') == " ") {
+                alert("City is required");
+                city.focus();
+                return false;
+            }
+
+            var postalReg = new RegExp(/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/);
+            if (!postalReg.test(postalCode.value)) {
+                alert("Please the Postal Code Format should be X0X 0X0");
+                postalCode.focus();
+                return false;
+            }
+
+            if (province.options[province.selectedIndex].value == null ||
+                province.options[province.selectedIndex].value == "") {
+                alert("Province is required");
+                province.focus();
+                return false;
+            }
+
+            if (age.value < 18) {
+                alert("You have to be more than 18 years old to register");
+                age.focus();
+                return false;
+            }
+
+            var passReg = new RegExp(/^(?=.*\d)(?=.*[A-Z])[a-zA-Z0-9]{6,}$/)
+            if (!passReg.test(password.value)) {
+                alert("Passwords must have at least 6 characters and must contain at least one digit and one upper-case character");
+                password.focus();
+                return false;
+            }
+
+            if (confirmPassword.value != password.value) {
+                alert("The fields Password and Confirm Password must match!");
+                confirmPassword.focus();
+                return false;
+            }
+            var emailReg = new RegExp(/\S+@\S+\.\S+/);
+            if (!emailReg.test(email.value)) {
+                alert("Please, enter a valid e-mail")
+                email.focus();
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div></div>
+    </header>
+
+    <div class="text-center">
+        <h1>Member Registration</h1>
+        <h4>Please complete all the fields below: </h4>
+    </div>
+    <form id="frmContact" name="frmContact" action="javascript:alert('Thanks for registering with our website, your customer record was created successfully.')"
+          method="post" class="form-horizontal">
+        <div class="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="firstName" id="firstName" /><br />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Last Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="lastName" id="lastName" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="address" id="address" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="city" id="city" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Postal Code:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="postalCode" id="postalCode" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Province:</label>
+                <div class="col-sm-10">
+                    <select id="province">
+                        <option value="">Select Province</option>
+                        <option value="QC">QC</option>
+                        <option value="ON">ON</option>
+                        <option value="MN">MN</option>
+                        <option value="SK">SK</option>
+                        <option value="AB">AB</option>
+                        <option value="BC">BC</option>
+                    </select><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Age:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="age" id="age" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" id="password" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Confirm:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="confirmPassword" id="confirmPassword" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="email" id="email" /><br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10" id="button">
+                    <input type="submit" value="Submit" onclick="return formValidation()" class="btn btn-success">
+                    <input type="reset" name="Clear Form" value="Reset" class="btn btn-danger">
+                </div>
+        </div>
+    </form>
+
+    <div>
+        <a class="btn btn-default" href= "index.html" role="button">Back to homepage</a>
+    </div>
+    <footer>
+        <h5> &copy; Copyright - Carol Miranda // Centennial College - Student Number 300812147</h5>
+    </footer>
+</body>
+</html>
